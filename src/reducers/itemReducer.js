@@ -1,24 +1,25 @@
-import { FETCH_ITEMS, NEW_ITEMS } from '../actions/types';
+import { SET_ITEMS, ADD_ITEM } from '../actions/types';
 
 const initialState = {
-  items: [],
-  item: {}
+  items: []
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
 
-    case FETCH_ITEMS:
+    case SET_ITEMS:
       return {
         ...state,
         items: action.payload
       }
-    case NEW_ITEMS:
 
-      break;
+    case ADD_ITEM:
+      return {
+        ...state,
+        items: state.items.concat(action.payload)
+      }
 
     default:
       return state;
-      break;
   }
 }

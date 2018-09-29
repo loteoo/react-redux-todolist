@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createItem } from '../actions/itemActions';
 
-export default class ItemForm extends Component {
+
+class ItemForm extends Component {
 
   constructor(props) {
     super(props);
@@ -14,24 +18,14 @@ export default class ItemForm extends Component {
   }
 
   onFormSubmit(ev) {
-    ev.preventDefault()
+    ev.preventDefault();
 
-    // Create a item object
-    const newItem = {
+    this.props.createItem({
       title: this.state.input,
       completed: false
-    }
+    });
     
-    // POST the item to the API
-    fetch('https://jsonplaceholder.typicode.com/todos', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(newItem)
-    })
-      .then(response => response.json())
-      .then(item => console.log(item))
+    this.setState({input: ''})
   }
 
   render() {
@@ -62,3 +56,9 @@ export default class ItemForm extends Component {
     )
   }
 }
+
+ItemForm.propTypes = {
+  createItem: PropTypes.func.isRequired
+}
+
+export default connect(null, { createItem })(ItemForm)
