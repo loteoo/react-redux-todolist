@@ -25,8 +25,9 @@ class ItemsTable extends Component {
             <tr>
               <th>ID #</th>
               <th>Title</th>
-              <th>Toggle</th>
+              <th>Edit</th>
               <th>Delete</th>
+              <th>Toggle</th>
             </tr>
           </thead>
           <tbody>

@@ -36,6 +36,7 @@ class App extends Component {
           <footer>
             <div className="container">
               <p>Built with the <a href="https://www.getpapercss.com/docs/">paper.css</a> theme</p>
+              <p>By <b>Alexandre Lotte</b></p>
               <p>Experiments, experiments!</p>
             </div>
           </footer>
