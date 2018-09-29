@@ -8,7 +8,11 @@ import Item from './Item'
 class ItemsTable extends Component {
 
   componentWillMount() {
-    this.props.fetchItems();
+    this.props.fetchItems(this.props.items.length);
+  }
+
+  loadMore() {
+    this.props.fetchItems(this.props.items.length);
   }
 
   render() {
@@ -21,7 +25,8 @@ class ItemsTable extends Component {
             <tr>
               <th>ID #</th>
               <th>Title</th>
-              <th>actions</th>
+              <th>Toggle</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -29,7 +34,9 @@ class ItemsTable extends Component {
           </tbody>
         </table>
 
-        {/* <p>Total: {items.length}</p> */}
+        <div className="row flex-center">
+          <button className="margin" onClick={this.loadMore.bind(this)}>Load more!</button>
+        </div>
       </div>
     )
   }

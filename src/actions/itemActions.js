@@ -1,7 +1,7 @@
 import { SET_ITEMS, ADD_ITEM, TOGGLE_ITEM_STATUS, SET_ITEM_TITLE, DELETE_ITEM } from './types';
 
-export const fetchItems = () => dispatch => (
-  fetch(`https://jsonplaceholder.typicode.com/todos?_start=0&_limit=10&_sort=id&_order=DESC`)
+export const fetchItems = current => dispatch => (
+  fetch(`https://jsonplaceholder.typicode.com/todos?_start=0&_limit=${current + 10}&_sort=id&_order=DESC`)
     .then(response => response.json())
     .then(items => dispatch({
       type: SET_ITEMS,

@@ -19,6 +19,8 @@ class ItemForm extends Component {
 
   onFormSubmit(ev) {
     ev.preventDefault();
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
 
     this.props.createItem({
       title: this.state.input,

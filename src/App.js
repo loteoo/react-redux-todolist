@@ -17,6 +17,7 @@ class App extends Component {
           <header>
             <div className="container">
               <h1>React + Redux Todo list app</h1>
+              <p>Uses <a href="https://jsonplaceholder.typicode.com/">JSON placeholder</a> api (persistant)</p>
             </div>
           </header>
           <main>

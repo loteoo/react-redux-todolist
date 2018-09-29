@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case ADD_ITEM:
       return {
         ...state,
-        items: state.items.concat(action.payload)
+        items: [action.payload].concat(state.items)
       }
 
     case TOGGLE_ITEM_STATUS:
