@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions/itemActions';
 
+import Item from './Item'
+
 class ItemsTable extends Component {
 
   componentWillMount() {
@@ -17,23 +19,13 @@ class ItemsTable extends Component {
         <table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Value</th>
-              <th>completed</th>
+              <th>ID #</th>
+              <th>Title</th>
+              <th>actions</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.items.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.title}</td>
-                <td>
-                <label className="paper-check">
-                  <input type="checkbox" name="completed" value={item.completed} /> <span>Done</span>
-                </label>
-                </td>
-              </tr>
-            ))}
+            {this.props.items.map(item => <Item key={item.id} {...item} />)}
           </tbody>
         </table>
 

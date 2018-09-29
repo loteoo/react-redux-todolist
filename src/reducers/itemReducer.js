@@ -1,4 +1,4 @@
-import { SET_ITEMS, ADD_ITEM } from '../actions/types';
+import { SET_ITEMS, ADD_ITEM, TOGGLE_ITEM_STATUS, SET_ITEM_TITLE, DELETE_ITEM } from '../actions/types';
 
 const initialState = {
   items: []
@@ -17,6 +17,32 @@ export default (state = initialState, action) => {
       return {
         ...state,
         items: state.items.concat(action.payload)
+      }
+
+    case TOGGLE_ITEM_STATUS:
+      return {
+        ...state,
+        items:  state.items.map(item => 
+          action.payload === item.id 
+            ? ({...item, completed: !item.completed})
+            : item
+        )
+      }
+
+    case SET_ITEM_TITLE:
+      return {
+        ...state,
+        items:  state.items.map(item => 
+          action.payload.itemId === item.id 
+            ? ({...item, title: action.payload.title})
+            : item
+        )
+      }
+
+    case DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => action.payload !== item.id)
       }
 
     default:
