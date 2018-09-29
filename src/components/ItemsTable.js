@@ -43,13 +43,13 @@ class ItemsTable extends Component {
   }
 }
 
-ItemsTable.PropTypes = {
+ItemsTable.propTypes = {
   fetchItems: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-  items: state.items.items
+  items: state.todos.items
 })
 
 export default connect(mapStateToProps, { fetchItems })(ItemsTable)
