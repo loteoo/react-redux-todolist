@@ -39,7 +39,7 @@ class Item extends Component {
             this.props.completed 
               ? <strike>{this.props.title}</strike> 
               : this.state.editing
-                ? <input type="text" onChange={this.onInputChange.bind(this)} value={this.props.title} Style="width: 100%;" />
+                ? <input type="text" onChange={this.onInputChange.bind(this)} value={this.props.title} style={{width: '100%'}} />
                 : this.props.title
           }
         </td>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './global.css';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
 import ItemsTable from './components/ItemsTable';
 import ItemForm from './components/ItemForm';
