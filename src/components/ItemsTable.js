@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchItems } from '../actions/itemActions';
 
-export default class ItemsTable extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
-    }
-  }
+class ItemsTable extends Component {
 
   componentWillMount() {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then(response => response.json())
-      .then(items => this.setState({items}))
+    this.props.fetchItems();
   }
 
   render() {
@@ -29,7 +23,7 @@ export default class ItemsTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.items.map(item => (
+            {this.props.items.map(item => (
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.title}</td>
@@ -48,3 +42,14 @@ export default class ItemsTable extends Component {
     )
   }
 }
+
+ItemsTable.PropTypes = {
+  fetchItems: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+  items: state.items.items
+})
+
+export default connect(mapStateToProps, { fetchItems })(ItemsTable)
