@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './global.css';
+
+import ItemsTable from './components/ItemsTable';
+import ItemForm from './components/ItemForm';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div>
+        <header>
+          <div className="container">
+            <h1>React + Redux Todo list app</h1>
+          </div>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <main>
+          
+          <hr />
+
+          <ItemsTable />
+          
+          <hr />
+
+          <ItemForm />
+        </main>
+        
+        <hr />
+
+        <footer>
+          <div className="container">
+            <p>Built with the <a href="https://www.getpapercss.com/docs/">paper.css</a> theme</p>
+            <p>Experiments, experiments!</p>
+          </div>
+        </footer>
       </div>
     );
   }
